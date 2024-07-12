@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
 
-app.get("/api/notes", (request, response) => {
-  response.json(notes);
-});
+// app.get("/api/notes", (request, response) => {
+//   response.json(notes);
+// });
 
-const http = require("http");
+// const http = require("http");
 
 let notes = [
   {
@@ -24,11 +24,21 @@ let notes = [
     important: true,
   },
 ];
-const appToShow = http.createServer((request, response) => {
-  response.writeHead(200, { "Content-Type": "application/json" });
-  response.end(JSON.stringify(notes));
+
+app.get("/api/notes", (request, response) => {
+  response.json(notes);
 });
 
 const PORT = 3001;
-app.listen(PORT);
-console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// const appToShow = http.createServer((request, response) => {
+//   response.writeHead(200, { "Content-Type": "application/json" });
+//   response.end(JSON.stringify(notes));
+// });
+
+// const PORT = 3001;
+// app.listen(PORT);
+// console.log(`Server running on port ${PORT}`);
